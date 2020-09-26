@@ -1,35 +1,40 @@
 <div class="">
   <div class="row mt-5">
     <div class="form-group col-md-12">
-      <div class="col-md-2 m-1">
-        <button type="button" class="btn btn-success" (click)="goToUserAuth()"><i
-          class="fas fa-times fa-fw"></i>Sign In
-        </button>
+      <div *ngIf="userFromLocalStorage == null">
+        <div class="col-md-2 m-1">
+          <button type="button" class="btn btn-success" (click)="goToUserAuth()"><i
+            class="fas fa-times fa-fw"></i>Sign In
+          </button>
+        </div>
+
+
+        <div class="col-md-2 m-1">
+          <button type="button" class="btn btn-success " (click)="goToUserCreate()"><i
+            class="fas fa-times fa-fw"></i>Sign Up
+          </button>
+        </div>
+
       </div>
 
+      <div *ngIf="userFromLocalStorage">
+        <div class="col-md-2 m-1">
+          <button type="button" class="btn btn-success " (click)="goToUserStatusCreate()"><i
+            class="fas fa-times fa-fw"></i>Create New Post
+          </button>
+        </div>
 
-      <div class="col-md-2 m-1">
-        <button type="button" class="btn btn-success " (click)="goToUserCreate()"><i
-          class="fas fa-times fa-fw"></i>Sign Up
-        </button>
-      </div>
+        <div class="col-md-2 m-1">
+          <button type="button" class="btn btn-success " (click)="goToUserProfile()"><i
+            class="fas fa-times fa-fw"></i>Hello {{userFromLocalStorage.name}}
+          </button>
+        </div>
 
-      <div class="col-md-2 m-1">
-        <button type="button" class="btn btn-success " (click)="goToUserStatusCreate()"><i
-          class="fas fa-times fa-fw"></i>Create Post
-        </button>
-      </div>
-
-      <div class="col-md-2 m-1">
-        <button type="button" class="btn btn-success " (click)="goToUserProfile()"><i
-          class="fas fa-times fa-fw"></i>User Profile
-        </button>
-      </div>
-
-      <div class="col-md-2 m-1">
-        <button type="button" class="btn btn-success " (click)="doLogOut()"><i
-          class="fas fa-times fa-fw"></i>Log Out
-        </button>
+        <div class="col-md-2 m-1">
+          <button type="button" class="btn btn-success " (click)="doLogOut()"><i
+            class="fas fa-times fa-fw"></i>Log Out
+          </button>
+        </div>
       </div>
     </div>
   </div>

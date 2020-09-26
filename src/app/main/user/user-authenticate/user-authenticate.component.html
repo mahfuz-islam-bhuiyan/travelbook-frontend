@@ -1,1 +1,11 @@
-<p>user-authenticate works!</p>
+<div>
+  <form (ngSubmit)="onAuthenticate()">
+    <div>
+      <input maxlength="70" type="email" [(ngModel)]="user.email" name="email" placeholder="Enter the email" class="form-control mt-2 mb-2"><br><br>
+      <input maxlength="80" type="password" [(ngModel)]="user.password" name="password" placeholder="Enter the password" class="form-control mt-2 mb-2"><br><br>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-lg btn-primary btn-block" [disabled]="isSubmittingInProcess">Sign In</button>
+  </form>
+</div>
+

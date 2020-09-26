@@ -11,14 +11,14 @@ import {tap} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {UserService} from "../services/user.service";
 import {LocalStoragePropertyNameEnum} from "../enum/local-storage-property-name.enum";
+import {CommonUtils} from "../util/commonUtils";
 
 @Injectable({providedIn: 'root'})
 export class AuthHttpInterceptorService implements HttpInterceptor {
 
-  constructor(private router: Router, private userService: UserService) {
+  constructor(private commonUtils: CommonUtils, private userService: UserService) {
   }
 
-  // Intercept every outgoing Http Request by adding token information in the header of the request
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     if (localStorage.getItem(LocalStoragePropertyNameEnum.travelBookUser)
           && localStorage.getItem(LocalStoragePropertyNameEnum.travelBookUserToken)) {
@@ -41,9 +41,11 @@ export class AuthHttpInterceptorService implements HttpInterceptor {
       }, (err: any) => {
         if (err instanceof HttpErrorResponse) {
           if (err.status === 401) {
+            if(err.url.indexOf('/authenticate') === -1) {
               this.userService.logout();
 
-              this.router.navigate(['/']);
+              this.commonUtils.goToHome();
+            }
           }
         }
       }));

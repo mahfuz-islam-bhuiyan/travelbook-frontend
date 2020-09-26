@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {UserService} from "../../../shared/services/user.service";
+import {Router} from "@angular/router";
+import {HttpErrorResponse} from "@angular/common/http";
+import {CommonUtils} from "../../../shared/util/commonUtils";
+import {UserModel} from "../../../shared/domains/user.model";
 
 @Component({
   selector: 'app-user-authenticate',
@@ -7,9 +12,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserAuthenticateComponent implements OnInit {
 
-  constructor() { }
+  user:UserModel = new UserModel();
+
+  constructor(private userService: UserService, private router: Router, private commonUtils:CommonUtils) {
+  }
 
   ngOnInit() {
+  }
+
+  onAuthenticate() {
+    this.userService.authenticateUser(this.user.email, this.user.password).subscribe(
+      data => {
+        // this.signinFail = false;
+        this.commonUtils.goToHome();
+      },
+      (error: HttpErrorResponse) => {
+        if (error.status === 401) {
+          // this.signinFail = true;
+
+          alert("Invalid email or password");
+        }
+      }
+    );
   }
 
 }
