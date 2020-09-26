@@ -3,7 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 
 
 const routes: Routes = [
-  // {path: '', loadChildren: './account/account.module#AccountModule'},
+
   {path: '', loadChildren: () => import('./main/home/home.module').then(m => m.HomeModule)},
 
   {
@@ -18,14 +18,10 @@ const routes: Routes = [
     path: 'user/profile',
     loadChildren: () => import('./main/user/user-profile/user-profile.module').then(m => m.UserProfileModule)
   },
-  // {
-  //   path: 'usersstatus/create',
-  //   loadChildren: () => import('./main/user/user-.module').then(m => m.HomeModule)
-  // },
-  // {
-  //   path: 'usersstatus/edit',
-  //   loadChildren: () => import('./main/user/user-.module').then(m => m.HomeModule)
-  // },
+  {
+    path: 'usersstatus/create',
+    loadChildren: () => import('./main/home/userstatus-create-edit/userstatus-create-edit.module').then(m => m.UserstatusCreateEditModule)
+  },
 
 
 ];
