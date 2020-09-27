@@ -8,8 +8,8 @@ export class UsersStatusModel {
   privacyStatusType?: string;
   isPinned?: boolean;
 
-  createdAt?: Date;
-  updatedAt?: Date;
+  createTime?: Date;
+  updateTime?: Date;
 
   user?: UserModel = new UserModel();
   location?: LocationModel = new LocationModel();

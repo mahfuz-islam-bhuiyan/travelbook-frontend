@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from "../../shared/services/user.service";
-import {Router} from "@angular/router";
-import {UsersStatusService} from "../../shared/services/users-status.service";
-import {UsersStatusModel} from "../../shared/domains/users-status.model";
-import {UserLoginDataModel} from "../../shared/domains/user-login-data.model";
-import {UserModel} from "../../shared/domains/user.model";
+import {UserService} from '../../shared/services/user.service';
+import {Router} from '@angular/router';
+import {UsersStatusService} from '../../shared/services/users-status.service';
+import {UsersStatusModel} from '../../shared/domains/users-status.model';
+import {UserLoginDataModel} from '../../shared/domains/user-login-data.model';
+import {UserModel} from '../../shared/domains/user.model';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +13,7 @@ import {UserModel} from "../../shared/domains/user.model";
 })
 export class HomeComponent implements OnInit {
 
-  userStatuses: UsersStatusModel[];
+  userStatuses: UsersStatusModel[] = [];
   userFromLocalStorage: UserModel = null;
 
   constructor(private userService: UserService, private statusService: UsersStatusService, private router: Router) {
@@ -21,6 +21,11 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getAllPublicStatus();
+  }
+
+  getAllPublicStatus() {
+    this.statusService.getStatuses().subscribe(res => this.userStatuses = res);
   }
 
   goToUserAuth = () => this.router.navigate(['/user/authenticate']);
