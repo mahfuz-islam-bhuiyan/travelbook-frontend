@@ -23,6 +23,9 @@ export class UserCreateComponent implements OnInit {
   }
 
   onUserCreate() {
+    if (!this.areInputsValidated()) {
+      return;
+    }
     this.userService.createUser(this.user).subscribe(res => {
       if (res != null) {
         if (TravelBookApiResponseModel.isStatusSuccess(res.status)) {
@@ -33,5 +36,18 @@ export class UserCreateComponent implements OnInit {
         }
       }
     });
+  }
+
+  areInputsValidated() {
+    if (this.commonUtils.isNullOrBlank(this.user.name, 'Name')) {
+      return false;
+    } else if (this.commonUtils.isNullOrBlank(this.user.email, 'Email')) {
+      return false;
+    } else if (this.commonUtils.isNotValidEmail(this.user.email)) {
+      return false;
+    } else if (this.commonUtils.isNullOrBlank(this.user.password, 'Password')) {
+      return false;
+    }
+    return true;
   }
 }

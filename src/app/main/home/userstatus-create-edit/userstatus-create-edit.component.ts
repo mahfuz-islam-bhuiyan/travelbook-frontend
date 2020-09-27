@@ -58,6 +58,9 @@ export class UserstatusCreateEditComponent implements OnInit {
   }
 
   onStatusPostUpdate() {
+    if (!this.areInputsValidated()) {
+      return;
+    }
     let updateMode = false;
     if (this.status.user.userId == null) {
       this.status.user.userId = this.userFromLocalStorage.userId;
@@ -79,5 +82,14 @@ export class UserstatusCreateEditComponent implements OnInit {
         }
       }
     });
+  }
+
+  areInputsValidated() {
+    if (this.commonUtils.isNullOrBlank(this.status.statusMessage, 'Status message')) {
+      return false;
+    } else if (this.commonUtils.isNullOrBlank(this.status.location.locationId, 'Location')) {
+      return false;
+    }
+    return true;
   }
 }

@@ -5,7 +5,7 @@ export class UsersStatusModel {
   userStatusId?: number;
 
   statusMessage?: string;
-  privacyStatusType?: string;
+  privacyStatusType = 'PUBLIC';
   isPinned?: boolean;
 
   createTime?: Date;
