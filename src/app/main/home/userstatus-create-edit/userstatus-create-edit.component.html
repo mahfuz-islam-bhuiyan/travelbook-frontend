@@ -1,8 +1,15 @@
 <div>
   <form (ngSubmit)="onStatusPostUpdate()">
+    <div class="mt-2 mb-2">
+      <label for="pinned" class="" *ngIf="status.userStatusId > 0">
+        <input type="checkbox" [(ngModel)]="pinned" name="pinned" id="pinned">
+        <span class="ml-1"> Pin Status</span>
+      </label>
+    </div>
+    <br>
+    <br>
     <div>
       <input maxlength="70" type="text" [(ngModel)]="status.statusMessage" name="statusMessage" placeholder="Type your status" class="form-control mt-2 mb-2"><br><br>
-<!--      <input maxlength="80" type="password" [(ngModel)]="status." name="password" placeholder="Enter the password" class="form-control mt-2 mb-2"><br><br>-->
     </div>
     <div class="row">
       <div class="col-md-6">

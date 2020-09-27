@@ -21,7 +21,7 @@ export class UserstatusCreateEditComponent implements OnInit {
   userFromLocalStorage: UserModel = null;
   private userStatusId: any;
   private isEditForm: boolean;
-
+  pinned = false;
 
   constructor(
     private statusService: UsersStatusService,
@@ -51,18 +51,29 @@ export class UserstatusCreateEditComponent implements OnInit {
   getStatus(userStatusId) {
     this.statusService.getStatus(userStatusId).subscribe(res => {
       this.status = res == null ? new UsersStatusModel() : res;
+      if (this.status) {
+        this.pinned = this.status.isPinned;
+      }
     });
   }
 
   onStatusPostUpdate() {
+    let updateMode = false;
     if (this.status.user.userId == null) {
       this.status.user.userId = this.userFromLocalStorage.userId;
+    } else {
+      updateMode = true;
+      this.status.isPinned = this.pinned;
     }
     this.statusService.createUpdateStatus(this.status).subscribe(res => {
       if (res) {
         if (TravelBookApiResponseModel.isStatusSuccess(res.status)) {
           alert(res.msg);
-          this.commonUtils.goToUserProfile();
+          if (updateMode) {
+            this.commonUtils.goToUserProfile();
+          } else {
+            this.commonUtils.goToHome();
+          }
         } else {
           alert(res.msg);
         }

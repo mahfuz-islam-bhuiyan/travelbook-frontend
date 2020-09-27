@@ -15,6 +15,9 @@
               <p class="text-left active-status bg-skill-tag">
                 {{status.privacyStatusType == 'PRIVATE' ? 'Private' : 'Public'}}
               </p>
+              <p class="text-left active-status bg-skill-tag">
+                {{status.isPinned ? 'Pinned' : ''}}
+              </p>
 
               <h5 class="card-title font-weight-bold">{{status.user.name}}</h5>
               <p class="card-text course-subtitle mb-md-2">{{status.statusMessage}}</p>

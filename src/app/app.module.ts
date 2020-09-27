@@ -5,7 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {environment} from '../environments/environment';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {AuthHttpInterceptorService} from "./shared/interceptors/auth-http-interceptor.service";
+import {AuthHttpInterceptorService} from './shared/interceptors/auth-http-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -23,4 +23,5 @@ import {AuthHttpInterceptorService} from "./shared/interceptors/auth-http-interc
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

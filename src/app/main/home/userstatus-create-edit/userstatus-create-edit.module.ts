@@ -12,7 +12,7 @@ import {UserstatusCreateEditComponent} from './userstatus-create-edit.component'
   imports: [
     CommonModule,
     UserstatusCreateEditRoutingModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class UserstatusCreateEditModule {
