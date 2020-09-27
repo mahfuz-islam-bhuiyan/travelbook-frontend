@@ -7,7 +7,7 @@ export class CommonUtils {
   constructor(private router: Router) {
   }
 
-  goToHome = () => this.router.navigate(['/']);
+  goToHome = () => this.router.navigate(['/']).then(value => location.reload());
   goToSignIn = () => this.router.navigate(['/user/authenticate']);
   goToUserProfile = () => this.router.navigate(['/user/profile']);
   goToStatusEdit = (userStatusId) => this.router.navigate(['/usersstatus/edit/', userStatusId]);
@@ -26,7 +26,7 @@ export class CommonUtils {
       alert('Invalid email format');
       return true;
     }
-    return false ;
+    return false;
   }
 
 }

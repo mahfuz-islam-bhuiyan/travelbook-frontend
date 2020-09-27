@@ -1,11 +1,17 @@
-<div>
+<div class="container mt-5">
   <form (ngSubmit)="onUserCreate()">
     <div>
-      <input maxlength="100" type="text" [(ngModel)]="user.name" name="name" placeholder="Enter your name" class="form-control mt-2 mb-2"><br><br>
-      <input maxlength="70" type="email" [(ngModel)]="user.email" name="email" placeholder="Enter an email. You'll use it to log in" class="form-control mt-2 mb-2"><br><br>
-      <input maxlength="80" type="password" [(ngModel)]="user.password" name="password" placeholder="Enter a password" class="form-control mt-2 mb-2"><br><br>
+      <input maxlength="100" type="text" [(ngModel)]="user.name" name="name" placeholder="Enter your name" class="form-control mt-2 mb-2"><br>
+      <input maxlength="70" type="email" [(ngModel)]="user.email" name="email" placeholder="Enter an email. You'll use it to log in" class="form-control mt-2 mb-2"><br>
+      <input maxlength="80" type="password" [(ngModel)]="user.password" name="password" placeholder="Enter a password" class="form-control mt-2 mb-2"><br>
     </div>
     <br>
-    <button type="submit" class="btn btn-lg btn-primary btn-block" [disabled]="isSubmittingInProcess">Sign Up</button>
+    <div class="row">
+      <div class="col-4 mx-auto">
+        <button type="submit" class="btn btn-lg btn-primary btn-block">Sign Up</button>
+      </div>
+    </div>
+
+
   </form>
 </div>

@@ -1,43 +1,5 @@
+
 <div class="container my-md-4">
-  <div class="row mt-5">
-    <div class="form-group col-md-12 d-flex justify-content-between">
-      <div *ngIf="userFromLocalStorage == null">
-        <div class="col-md-2 m-1">
-          <button type="button" class="btn btn-success" (click)="goToUserAuth()"><i
-            class="fas fa-times fa-fw"></i>Sign In
-          </button>
-        </div>
-
-
-        <div class="col-md-2 m-1">
-          <button type="button" class="btn btn-success " (click)="goToUserCreate()"><i
-            class="fas fa-times fa-fw"></i>Sign Up
-          </button>
-        </div>
-
-      </div>
-
-      <div *ngIf="userFromLocalStorage">
-        <div class="col-md-2 m-1">
-          <button type="button" class="btn btn-success " (click)="goToUserStatusCreate()"><i
-            class="fas fa-times fa-fw"></i>Create New Post
-          </button>
-        </div>
-
-        <div class="col-md-2 m-1">
-          <button type="button" class="btn btn-success " (click)="goToUserProfile()"><i
-            class="fas fa-times fa-fw"></i>Hello {{userFromLocalStorage.name}}
-          </button>
-        </div>
-
-        <div class="col-md-2 m-1">
-          <button type="button" class="btn btn-success " (click)="doLogOut()"><i
-            class="fas fa-times fa-fw"></i>Log Out
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
   <div class="container">
   <div class="row">
       <div class="col-md-12" *ngFor="let status of userStatuses">
@@ -48,7 +10,7 @@
 
               <h5 class="card-title font-weight-bold">{{status.user.name}}</h5>
               <p class="card-text course-subtitle mb-md-2">{{status.statusMessage}}</p>
-              <ul class="list-unstyled card-text" role="list">
+              <ul class="list-unstyled card-text text-secondary" role="list">
                 <li><span>Checked In at </span>{{status.location.location}}</li>
                 <li><span>Last updated </span>{{status.updateTime | date:'medium'}}</li>
 <!--                <li><span>{{'admin.adminCourseList.courseInstructorName' | translate}}: </span>{{course.instructorName}}</li>-->

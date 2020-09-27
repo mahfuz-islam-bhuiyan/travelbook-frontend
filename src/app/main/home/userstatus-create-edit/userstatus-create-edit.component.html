@@ -1,4 +1,4 @@
-<div>
+<div class="container mt-5">
   <form (ngSubmit)="onStatusPostUpdate()">
     <div class="mt-2 mb-2">
       <label for="pinned" class="" *ngIf="status.userStatusId > 0">
@@ -7,9 +7,8 @@
       </label>
     </div>
     <br>
-    <br>
     <div>
-      <input maxlength="70" type="text" [(ngModel)]="status.statusMessage" name="statusMessage" placeholder="Type your status" class="form-control mt-2 mb-2"><br><br>
+      <input maxlength="70" type="text" [(ngModel)]="status.statusMessage" name="statusMessage" placeholder="Type your status" class="form-control mt-2 mb-2"><br>
     </div>
     <div class="row">
       <div class="col-md-6">
@@ -31,7 +30,7 @@
     </div>
     <br>
     <div>
-      <label for="locationDropdown" class="font-weight-bold">Select Privacy Type</label>
+      <label for="locationDropdown" class="font-weight-bold">Select Privacy Type</label><br>
 
       <div class="custom-control custom-control-inline custom-radio">
         <input id="publicStatusTypeChckId" class="custom-control-input" [(ngModel)]="status.privacyStatusType" type="radio"
@@ -45,10 +44,14 @@
       </div>
     </div>
     <br>
+    <div class="row">
+      <div class="col-4 mx-auto">
+        <button type="submit" class="btn btn-lg btn-primary btn-block" *ngIf="status.userStatusId == null">
+          Post Status</button>
+        <button type="submit" class="btn btn-lg btn-primary btn-block" *ngIf="status.userStatusId > 0">
+          Update Status</button>
+      </div>
+    </div>
 
-    <button type="submit" class="btn btn-lg btn-primary btn-block" *ngIf="status.userStatusId == null">
-      Post Status</button>
-    <button type="submit" class="btn btn-lg btn-primary btn-block" *ngIf="status.userStatusId > 0">
-      Update Status</button>
   </form>
 </div>

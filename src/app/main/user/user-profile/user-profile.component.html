@@ -1,8 +1,10 @@
-<div class="container">
+<div class="container container mt-5">
   <b>Hello {{userFromLocalStorage.name}} </b>
   <br>
   These are your Statuses
 
+  <br>
+  <br>
   <br>
   <div class="container">
     <div class="row">
@@ -12,16 +14,25 @@
             <button type="button" class="btn btn-warning " (click)="goToStatusEdit(status.userStatusId)">
               <i class="fas fa-times fa-fw"></i>Edit</button>
             <div class="card-body-content">
-              <p class="text-left active-status bg-skill-tag">
-                {{status.privacyStatusType == 'PRIVATE' ? 'Private' : 'Public'}}
-              </p>
-              <p class="text-left active-status bg-skill-tag">
-                {{status.isPinned ? 'Pinned' : ''}}
-              </p>
+              <div class="row">
+                <div class="col-4">
+                  <p class="text-left active-status text-info">
+                    {{status.privacyStatusType == 'PRIVATE' ? 'Private' : 'Public'}}
+                  </p>
+
+                </div><div class="col-8">
+
+                  <p class="text-right active-status bg-skill-tag text-danger">
+                    {{status.isPinned ? 'Pinned' : ''}}
+                  </p>
+                </div>
+              </div>
+
 
               <h5 class="card-title font-weight-bold">{{status.user.name}}</h5>
               <p class="card-text course-subtitle mb-md-2">{{status.statusMessage}}</p>
-              <ul class="list-unstyled card-text" role="list">
+
+              <ul class="list-unstyled card-text text-secondary" role="list">
                 <li><span>Checked In at </span>{{status.location.location}}</li>
                 <li><span>Last updated </span>{{status.updateTime | date:'medium'}}</li>
               </ul>

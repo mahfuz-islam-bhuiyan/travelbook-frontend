@@ -28,16 +28,5 @@ export class HomeComponent implements OnInit {
     this.statusService.getStatuses().subscribe(res => this.userStatuses = res);
   }
 
-  goToUserAuth = () => this.router.navigate(['/user/authenticate']);
 
-  goToUserCreate = () => this.router.navigate(['/user/create']);
-
-  goToUserProfile = () => this.router.navigate(['/user/profile']);
-
-  goToUserStatusCreate = () => this.router.navigate(['/usersstatus/create']);
-
-  doLogOut() {
-    this.userService.logout();
-    location.reload();
-  }
 }

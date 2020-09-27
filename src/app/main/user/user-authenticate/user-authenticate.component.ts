@@ -26,6 +26,7 @@ export class UserAuthenticateComponent implements OnInit {
     }
     this.userService.authenticateUser(this.user.email, this.user.password).subscribe(
       data => {
+
         // this.signinFail = false;
         this.commonUtils.goToHome();
       },
