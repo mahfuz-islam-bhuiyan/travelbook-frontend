@@ -38,4 +38,8 @@ export class UserProfileComponent implements OnInit {
     const param = {userId};
     this.statusService.getUserStatuses(param).subscribe(res => this.userStatuses = res);
   }
+
+  goToStatusEdit(userStatusId: number) {
+    this.commonUtils.goToStatusEdit(userStatusId);
+  }
 }

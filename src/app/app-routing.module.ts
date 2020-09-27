@@ -22,6 +22,10 @@ const routes: Routes = [
     path: 'usersstatus/create',
     loadChildren: () => import('./main/home/userstatus-create-edit/userstatus-create-edit.module').then(m => m.UserstatusCreateEditModule)
   },
+  {
+    path: 'usersstatus/edit/:userStatusId',
+    loadChildren: () => import('./main/home/userstatus-create-edit/userstatus-create-edit.module').then(m => m.UserstatusCreateEditModule)
+  },
 
 
 ];

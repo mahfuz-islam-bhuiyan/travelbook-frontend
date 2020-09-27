@@ -3,11 +3,14 @@
   <br>
   These are your Statuses
 
+  <br>
   <div class="container">
     <div class="row">
       <div class="col-md-12" *ngFor="let status of userStatuses">
         <div class="card shadow-sm mb-4 rounded-0">
           <div class="card-body">
+            <button type="button" class="btn btn-warning " (click)="goToStatusEdit(status.userStatusId)">
+              <i class="fas fa-times fa-fw"></i>Edit</button>
             <div class="card-body-content">
               <p class="text-left active-status bg-skill-tag">
                 {{status.privacyStatusType == 'PRIVATE' ? 'Private' : 'Public'}}

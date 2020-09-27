@@ -9,6 +9,8 @@ export class CommonUtils {
 
   goToHome = () => this.router.navigate(['/']);
   goToSignIn = () => this.router.navigate(['/user/authenticate']);
+  goToUserProfile = () => this.router.navigate(['/user/profile']);
+  goToStatusEdit = (userStatusId) => this.router.navigate(['/usersstatus/edit/', userStatusId]);
 
 
 }

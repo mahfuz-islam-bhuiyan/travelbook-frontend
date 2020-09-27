@@ -11,10 +11,10 @@ export class UsersStatusService {
   }
 
   getStatuses = () => this.httpClient.get<UsersStatusModel[]>(this.baseApiUrl + this.baseUrl + '/');
+  getStatus = (userStatusId) => this.httpClient.get<UsersStatusModel>(this.baseApiUrl + this.baseUrl + '/' + userStatusId);
 
   getUserStatuses = (param) => this.httpClient.post<UsersStatusModel[]>(this.baseApiUrl + this.baseUrl + '/getUserStatuses', param);
 
-  createStatus = (status: UsersStatusModel) => this.httpClient.post<TravelBookApiResponseModel>(this.baseApiUrl + this.baseUrl + '/', status);
-
+  createUpdateStatus = (status: UsersStatusModel) => this.httpClient.post<TravelBookApiResponseModel>(this.baseApiUrl + this.baseUrl + '/', status);
 
 }
