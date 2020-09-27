@@ -1,5 +1,5 @@
-import {UserModel} from "./user.model";
-import {LocationModel} from "./location.model";
+import {UserModel} from './user.model';
+import {LocationModel} from './location.model';
 
 export class UsersStatusModel {
   userStatusId?: number;
@@ -11,7 +11,7 @@ export class UsersStatusModel {
   createdAt?: Date;
   updatedAt?: Date;
 
-  user?: UserModel;
-  location?: LocationModel;
+  user?: UserModel = new UserModel();
+  location?: LocationModel = new LocationModel();
 
 }

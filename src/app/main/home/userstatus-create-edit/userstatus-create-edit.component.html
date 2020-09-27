@@ -4,7 +4,41 @@
       <input maxlength="70" type="text" [(ngModel)]="status.statusMessage" name="statusMessage" placeholder="Type your status" class="form-control mt-2 mb-2"><br><br>
 <!--      <input maxlength="80" type="password" [(ngModel)]="status." name="password" placeholder="Enter the password" class="form-control mt-2 mb-2"><br><br>-->
     </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="locationDropdown" class="font-weight-bold">Select Location</label>
+          <select class="form-control custom-select required" name="disabilityType" id="locationDropdown"
+                  [(ngModel)]="status.location.locationId"
+                  role="listbox"
+          >
+            <option selected value="" disabled aria-hidden="true"></option>
+            <option [attr.id]="locationObj.locationId"
+                    role="option" [ngValue]="locationObj.locationId" *ngFor="let locationObj of locations"
+            >
+              {{locationObj.location}}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
     <br>
-    <button type="submit" class="btn btn-lg btn-primary btn-block" [disabled]="isSubmittingInProcess">Post Status</button>
+    <div>
+      <label for="locationDropdown" class="font-weight-bold">Select Privacy Type</label>
+
+      <div class="custom-control custom-control-inline custom-radio">
+        <input id="publicStatusTypeChckId" class="custom-control-input" [(ngModel)]="status.privacyStatusType" type="radio"
+               name="privacyStatusType" value="PUBLIC">
+        <label class="custom-control-label" for="publicStatusTypeChckId" > Public </label>
+      </div>
+      <div class="custom-control custom-control-inline custom-radio">
+        <input class="custom-control-input" [(ngModel)]="status.privacyStatusType" type="radio" id="privateStatusTypeChckId"
+               name="privacyStatusType" value="PRIVATE" >
+        <label class="custom-control-label" for="privateStatusTypeChckId">Private</label>
+      </div>
+    </div>
+    <br>
+
+    <button type="submit" class="btn btn-lg btn-primary btn-block">Post Status</button>
   </form>
 </div>

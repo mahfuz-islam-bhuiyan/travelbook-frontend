@@ -8,6 +8,7 @@ export class CommonUtils {
   }
 
   goToHome = () => this.router.navigate(['/']);
+  goToSignIn = () => this.router.navigate(['/user/authenticate']);
 
 
 }

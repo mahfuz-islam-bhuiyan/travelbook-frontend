@@ -14,7 +14,7 @@ import {UserModel} from "../../shared/domains/user.model";
 export class HomeComponent implements OnInit {
 
   userStatuses: UsersStatusModel[];
-  userFromLocalStorage:UserModel = null;
+  userFromLocalStorage: UserModel = null;
 
   constructor(private userService: UserService, private statusService: UsersStatusService, private router: Router) {
     this.userFromLocalStorage = userService.getUserInfoFromSession();

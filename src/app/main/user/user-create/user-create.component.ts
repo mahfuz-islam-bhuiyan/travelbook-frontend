@@ -29,9 +29,9 @@ export class UserCreateComponent implements OnInit {
           alert(res.msg);
           this.commonUtils.goToHome();
         } else {
-          alert(res.msg)
+          alert(res.msg);
         }
       }
-    })
+    });
   }
 }
