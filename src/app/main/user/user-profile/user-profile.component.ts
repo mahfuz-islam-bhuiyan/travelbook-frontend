@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {UsersStatusService} from '../../../shared/services/users-status.service';
+import {LocationService} from '../../../shared/services/location.service';
+import {UserService} from '../../../shared/services/user.service';
+import {CommonUtils} from '../../../shared/util/commonUtils';
+import {UsersStatusModel} from '../../../shared/domains/users-status.model';
+import {LocationModel} from '../../../shared/domains/location.model';
+import {UserModel} from '../../../shared/domains/user.model';
 
 @Component({
   selector: 'app-user-profile',
@@ -7,9 +14,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor() { }
+  userStatuses: UsersStatusModel[] = [];
+  userFromLocalStorage: UserModel = null;
 
-  ngOnInit() {
+  constructor(
+    private statusService: UsersStatusService,
+    private locationService: LocationService,
+    private userService: UserService,
+    private commonUtils: CommonUtils
+  ) {
   }
 
+  ngOnInit() {
+    this.userFromLocalStorage = this.userService.getUserInfoFromSession();
+    if (this.userFromLocalStorage == null || this.userFromLocalStorage.userId <= 0) {
+      this.commonUtils.goToSignIn();
+    } else {
+      this.getAllUserStatus(this.userFromLocalStorage.userId);
+    }
+  }
+
+  getAllUserStatus(userId) {
+    const param = {userId};
+    this.statusService.getUserStatuses(param).subscribe(res => this.userStatuses = res);
+  }
 }

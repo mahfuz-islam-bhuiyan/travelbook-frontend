@@ -42,15 +42,15 @@ export class UserstatusCreateEditComponent implements OnInit {
 
   onStatusPost() {
     this.status.user.userId = this.userFromLocalStorage.userId;
-      this.statusService.createStatuses(this.status).subscribe(res => {
-        if (res) {
-          if (TravelBookApiResponseModel.isStatusSuccess(res.status)) {
-            alert(res.msg);
-            this.commonUtils.goToHome();
-          } else {
-            alert(res.msg);
-          }
+    this.statusService.createStatus(this.status).subscribe(res => {
+      if (res) {
+        if (TravelBookApiResponseModel.isStatusSuccess(res.status)) {
+          alert(res.msg);
+          this.commonUtils.goToHome();
+        } else {
+          alert(res.msg);
         }
-      });
+      }
+    });
   }
 }
